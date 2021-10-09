@@ -1,4 +1,8 @@
+// eslint-disable
+
 import React from "react";
+
+import { AnswerObject } from '../App';
 
 type Props = {
     question: string;
@@ -25,7 +29,7 @@ const QuestionCard: React.FC<Props> = ({
                 <div>
                     {answers.map(answer => (
                         <div>
-                            <button disabled={userAnswer} onClick={callback}>
+                            <button disabled={userAnswer ? true : false} onClick={callback}>
                                 <span dangerouslySetInnerHTML={{ __html: answer}} />
                             </button>
                         </div>
