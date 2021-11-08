@@ -6,6 +6,8 @@ import { fetchQuizQuestions } from './API';
 import QuestionCard from './components/QuestionCard';
 // types
 import { QuestionState, Difficulty } from './API';
+// styles
+import { Footer, GlobalStyle, Wrapper } from './App.styles';
 
 export type AnswerObject = {
   question: string;
@@ -76,15 +78,17 @@ const App = () => {
   }
 
   return (
-          <div className='App'>
-            <h1>Anime Quiz</h1>
+        <>
+          <GlobalStyle />
+          <Wrapper>
+            <h1>General Knowledge Quiz</h1>
             {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
               <button className='start' onClick={startQuiz}>
                 Start
               </button>
             ) : null}
             
-            {!gameOver ? <p className='score'>Score: </p> : null}
+            {!gameOver ? <p className='score'>Score: {score}</p> : null}
             {loading && <p>Loading Questions...</p>}
             
             {!loading && !gameOver && (
@@ -104,7 +108,11 @@ const App = () => {
                 </button>
             ) : null}
             
-          </div>
+          </Wrapper>
+          <Footer>
+              Made with 💙 by <a href="https://www.linkedin.com/in/abhyansh-agrahari/">Abhyansh Agrahari</a>
+          </Footer>
+        </>
   );
 }
 
